@@ -1,0 +1,27 @@
+{
+    "name": "flyve-mdm/test",
+    "type": "library",
+    "description": "Tools for unit testing Flyve MDM",
+    "keywords": ["unit", "test"],
+    "homepage": "https://github.com/flyve-mdm/flyve-mdm-glpi-test",
+    "license": "GPL-3.0+",
+	"authors": [
+        {
+            "name": "Thierry Bugier Pineau",
+            "email": "tbugier@teclib.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.6"
+    },
+	"autoload": {
+        "psr-4": {
+            "Flyvemdm\\Test\\": "src/Flyvemdm/Test/",
+            "Glpi\\Test\\": "src/Glpi/Test/"
+        }
+    }
+}
