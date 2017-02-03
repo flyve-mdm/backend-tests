@@ -36,6 +36,10 @@ use Session;
 abstract class CommonTestCase extends CommonDBTestCase
 {
 
+   public function setUp() {
+      self::resetGLPILogs();
+   }
+
    protected static function resetState() {
       self::resetGLPILogs();
 
