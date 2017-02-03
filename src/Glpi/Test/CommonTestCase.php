@@ -31,6 +31,7 @@
 
 namespace Glpi\Test;
 use Config;
+use Session;
 
 abstract class CommonTestCase extends CommonDBTestCase
 {
@@ -69,6 +70,14 @@ abstract class CommonTestCase extends CommonDBTestCase
 
       $this->assertEquals('', $fileSqlContent, 'sql-errors.log not empty');
       $this->assertEquals('', $filePhpContent, 'php-errors.log not empty');
+   }
+
+   protected static function loginWithUserToken($userToken) {
+      // Login as guest user
+      $_REQUEST['user_token'] = $userToken;
+      Session::destroy();
+      self::login('', '', false);
+      unset($_REQUEST['user_token']);
    }
 
    public function getMockForItemtype($classname, $methods = []) {
