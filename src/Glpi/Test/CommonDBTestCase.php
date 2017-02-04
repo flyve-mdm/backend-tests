@@ -31,7 +31,7 @@
 namespace Glpi\Test;
 
 use PHPUnit_Framework_TestCase;
-use Session; 
+use Session;
 use Html;
 use DB;
 use Auth;
@@ -169,7 +169,12 @@ class CommonDBTestCase extends PHPUnit_Framework_TestCase {
       $LOADED_PLUGINS = null;
       $_SESSION = array();
       $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;       // Prevents notice in execution of GLPI_ROOT . /inc/includes.php
-      include (GLPI_ROOT . "/config/config.php");
+      if (!is_readable("/config/config.php")) {
+         $configFile = "/config/config.php";
+      } else {
+         $configFile = "/inc/config.php";
+      }
+      include (GLPI_ROOT . $configFile);
       require (GLPI_ROOT . "/inc/includes.php");
 
       $DB = new DB();
