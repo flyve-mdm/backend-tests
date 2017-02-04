@@ -169,7 +169,7 @@ class CommonDBTestCase extends PHPUnit_Framework_TestCase {
       $LOADED_PLUGINS = null;
       $_SESSION = array();
       $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;       // Prevents notice in execution of GLPI_ROOT . /inc/includes.php
-      if (!is_readable("/config/config.php")) {
+      if (is_readable("/config/config.php")) {
          $configFile = "/config/config.php";
       } else {
          $configFile = "/inc/config.php";
