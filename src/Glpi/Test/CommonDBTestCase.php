@@ -36,7 +36,7 @@ use Html;
 use DB;
 use Auth;
 
-class CommonDBTestCase extends PHPUnit\Framework\TestCase {
+class CommonDBTestCase extends TestCase {
 
    protected static function drop_database($dbuser='', $dbhost='', $dbdefault='', $dbpassword=''){
 
