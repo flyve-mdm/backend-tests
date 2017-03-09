@@ -30,13 +30,13 @@
 */
 namespace Glpi\Test;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Session;
 use Html;
 use DB;
 use Auth;
 
-class CommonDBTestCase extends PHPUnit_Framework_TestCase {
+class CommonDBTestCase extends PHPUnit\Framework\TestCase {
 
    protected static function drop_database($dbuser='', $dbhost='', $dbdefault='', $dbpassword=''){
 
