@@ -31,10 +31,6 @@
 namespace Glpi\Test;
 
 use PHPUnit\Framework\TestCase;
-use Session;
-use Html;
-use DB;
-use Auth;
 
 class CommonDBTestCase extends TestCase {
 
@@ -163,44 +159,5 @@ class CommonDBTestCase extends TestCase {
       );
    }
 
-   protected static function setupGLPIFramework() {
-      global $CFG_GLPI, $DB, $LOADED_PLUGINS;
-
-      $LOADED_PLUGINS = null;
-      $_SESSION = array();
-      $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;       // Prevents notice in execution of GLPI_ROOT . /inc/includes.php
-      if (is_readable(GLPI_ROOT . "/config/config.php")) {
-         $configFile = "/config/config.php";
-      } else {
-         $configFile = "/inc/config.php";
-      }
-      include (GLPI_ROOT . $configFile);
-      require (GLPI_ROOT . "/inc/includes.php");
-
-      $DB = new DB();
-
-      include_once (GLPI_ROOT . "/inc/timer.class.php");
-
-      // Security of PHP_SELF
-      $_SERVER['PHP_SELF']=Html::cleanParametersURL($_SERVER['PHP_SELF']);
-
-      ini_set("memory_limit", "-1");
-      ini_set("max_execution_time", "0");
-
-      ini_set('session.use_cookies', 0); //disable session cookies
-      $_SESSION['MESSAGE_AFTER_REDIRECT'] = [];
-   }
-
-   protected static function login($name, $password, $noauto = false) {
-      global $DB;
-
-      Session::start();
-      $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;
-      $auth = new Auth();
-      $result = $auth->Login($name, $password, $noauto);
-      $_SESSION['MESSAGE_AFTER_REDIRECT'] = [];
-
-      return $result;
-   }
 
 }
