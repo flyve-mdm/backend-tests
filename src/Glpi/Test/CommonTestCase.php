@@ -39,7 +39,7 @@ use Auth;
 abstract class CommonTestCase extends CommonDBTestCase
 {
    protected $str = null;
- 
+
    public function setUp() {
       self::resetGLPILogs();
    }
@@ -72,6 +72,9 @@ abstract class CommonTestCase extends CommonDBTestCase
    protected static function setupGLPIFramework() {
       global $CFG_GLPI, $DB, $LOADED_PLUGINS;
 
+      if (session_status() == PHP_SESSION_ACTIVE) {
+         session_write_close();
+      }
       $LOADED_PLUGINS = null;
       $_SESSION = array();
       $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;       // Prevents notice in execution of GLPI_ROOT . /inc/includes.php
