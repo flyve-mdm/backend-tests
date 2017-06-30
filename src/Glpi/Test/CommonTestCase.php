@@ -38,7 +38,8 @@ use Auth;
 
 abstract class CommonTestCase extends CommonDBTestCase
 {
-
+   protected $str = null;
+ 
    public function setUp() {
       self::resetGLPILogs();
    }
@@ -125,6 +126,16 @@ abstract class CommonTestCase extends CommonDBTestCase
       Session::destroy();
       self::login('', '', false);
       unset($_REQUEST['user_token']);
+   }
+
+   /**
+    * Get a unique random string
+    */
+   protected function getUniqueString() {
+      if (is_null($this->str)) {
+         return $this->str = uniqid('str');
+      }
+      return $this->str .= 'x';
    }
 
    public function getMockForItemtype($classname, $methods = []) {
