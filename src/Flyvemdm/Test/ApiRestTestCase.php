@@ -26,7 +26,8 @@ class ApiRestTestCase extends GlpiApiRestTestCase
    }
 
    protected function fleet($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
@@ -34,23 +35,38 @@ class ApiRestTestCase extends GlpiApiRestTestCase
    }
 
    protected function file($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
       $this->emulateRestRequest($method, 'PluginFlyvemdmFile', $headers, $body, $params);
    }
 
+   /**
+    * @deprecated
+    */
    protected function fleet_policy($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
       $this->emulateRestRequest($method, 'PluginFlyvemdmFleet_Policy', $headers, $body, $params);
    }
 
+   protected function task($method, $sessionToken, $body = '', $params = [], $appToken = null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
+         $headers['App-Token'] = $appToken;
+      }
+
+      $this->emulateRestRequest($method, 'PluginFlyvemdmTask', $headers, $body, $params);
+   }
+
    protected function geolocation($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
@@ -58,7 +74,8 @@ class ApiRestTestCase extends GlpiApiRestTestCase
    }
 
    protected function invitationLog($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
@@ -66,7 +83,8 @@ class ApiRestTestCase extends GlpiApiRestTestCase
    }
 
    protected function mqttLog($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
@@ -74,7 +92,8 @@ class ApiRestTestCase extends GlpiApiRestTestCase
    }
 
    protected function package($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
@@ -82,7 +101,8 @@ class ApiRestTestCase extends GlpiApiRestTestCase
    }
 
    protected function policy($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
@@ -90,7 +110,8 @@ class ApiRestTestCase extends GlpiApiRestTestCase
    }
 
    protected function wellknownpath($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
@@ -98,7 +119,8 @@ class ApiRestTestCase extends GlpiApiRestTestCase
    }
 
    protected function entityconfig($method, $sessionToken, $body = '', $params = [], $appToken = null) {
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
@@ -107,7 +129,8 @@ class ApiRestTestCase extends GlpiApiRestTestCase
 
    protected function accountvalidation($method, $sessionToken, $body = '', $params = [], $appToken = null) {
       $headers = ['Session-Token' => $sessionToken];
-      $headers = ['Session-Token' => $sessionToken];      if ($appToken !== null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
