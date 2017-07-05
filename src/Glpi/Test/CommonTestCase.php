@@ -96,7 +96,11 @@ abstract class CommonTestCase extends CommonDBTestCase
       ini_set("memory_limit", "-1");
       ini_set("max_execution_time", "0");
 
+      if (session_status() == PHP_SESSION_ACTIVE) {
+         session_write_close();
+      }
       ini_set('session.use_cookies', 0); //disable session cookies
+      session_start();
       $_SESSION['MESSAGE_AFTER_REDIRECT'] = [];
    }
 
