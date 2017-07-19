@@ -2,11 +2,11 @@
 
 ![Flyve MDM banner](https://user-images.githubusercontent.com/663460/26935464-54267e9c-4c6c-11e7-86df-8cfa6658133e.png)
 
-[![License](https://img.shields.io/github/license/flyve-mdm/flyve-mdm-glpi-demo.svg?&label=License)](https://github.com/flyve-mdm/flyve-mdm-glpi-demo/blob/master/LICENSE.md)
+[![License](https://img.shields.io/github/license/flyve-mdm/flyve-mdm-glpi-test.svg?&label=License)](https://github.com/flyve-mdm/flyve-mdm-glpi-test/blob/master/LICENSE.md)
 [![Follow twitter](https://img.shields.io/twitter/follow/FlyveMDM.svg?style=social&label=Twitter&style=flat-square)](https://twitter.com/FlyveMDM)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Group-blue.svg)](https://t.me/flyvemdm)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-[![GitHub release](https://img.shields.io/github/release/flyve-mdm/flyve-mdm-glpi-demo.svg)](https://github.com/flyve-mdm/flyve-mdm-glpi-demo/releases)
+[![GitHub release](https://img.shields.io/github/release/flyve-mdm/flyve-mdm-glpi-test.svg)](https://github.com/flyve-mdm/flyve-mdm-glpi-test/releases)
 
 Flyve MDM is a Mobile device management software that enables you to secure and manage all the mobile devices of your business or family via a web-based console.
 
@@ -33,7 +33,7 @@ TBF
 
 | **Release channel** | **Beta channel** |
 |:---:|:---:|
-| [![Build Status](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-demo.svg?branch=master)](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-demo) | [![Build Status](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-demo.svg?branch=develop)](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-demo) |
+| [![Build Status](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-test.svg?branch=master)](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-test) | [![Build Status](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-test.svg?branch=develop)](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-test) |
 
 ## Installation
 
@@ -49,18 +49,18 @@ Enable the setting Time limit to limit the lifetime of the demo accounts. After 
 
 ## Documentation
 
-We share long-form content about the project in the [wiki](https://github.com/flyve-mdm/flyve-mdm-glpi-demo/wiki).
+We share long-form content about the project in the [wiki](https://github.com/flyve-mdm/flyve-mdm-glpi-test/wiki).
 
 ## Versioning
 
 In order to provide transparency on our release cycle and to maintain backward compatibility, Flyve MDM is maintained under [the Semantic Versioning guidelines](http://semver.org/). We are committed to following and complying with the rules, the best we can.
 
-See [the tags section of our GitHub project](http://github.com/flyve-mdm/flyve-mdm-glpi-demo/tags) for changelogs for each release version of Flyve MDM. Release announcement posts on [the official Teclib' blog](http://www.teclib-edition.com/en/communities/blog-posts/) contain summaries of the most noteworthy changes made in each release.
+See [the tags section of our GitHub project](http://github.com/flyve-mdm/flyve-mdm-glpi-test/tags) for changelogs for each release version of Flyve MDM. Release announcement posts on [the official Teclib' blog](http://www.teclib-edition.com/en/communities/blog-posts/) contain summaries of the most noteworthy changes made in each release.
 
 ## Contribute
 
 Want to file a bug, contribute some code, or improve documentation? Excellent! Read up on our
-guidelines for [contributing](./CONTRIBUTING.md) and then check out one of our issues in the [Issues Dashboard](https://github.com/flyve-mdm/flyve-mdm-glpi-demo/issues).
+guidelines for [contributing](./CONTRIBUTING.md) and then check out one of our issues in the [Issues Dashboard](https://github.com/flyve-mdm/flyve-mdm-glpi-test/issues).
 
 ## Contact
 
