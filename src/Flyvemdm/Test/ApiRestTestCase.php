@@ -129,11 +129,20 @@ class ApiRestTestCase extends GlpiApiRestTestCase
 
    protected function accountvalidation($method, $sessionToken, $body = '', $params = [], $appToken = null) {
       $headers = ['Session-Token' => $sessionToken];
-      $headers = ['Session-Token' => $sessionToken];
       if ($appToken !== null) {
          $headers['App-Token'] = $appToken;
       }
 
       $this->emulateRestRequest($method, 'PluginFlyvemdmAccountValidation', $headers, $body, $params);
    }
+
+   protected function captcha($method, $sessionToken, $body = '', $params = [], $appToken = null) {
+      $headers = ['Session-Token' => $sessionToken];
+      if ($appToken !== null) {
+         $headers['App-Token'] = $appToken;
+      }
+
+      $this->emulateRestRequest($method, 'PluginFlyvemdmCaptcha', $headers, $body, $params);
+   }
+
 }
