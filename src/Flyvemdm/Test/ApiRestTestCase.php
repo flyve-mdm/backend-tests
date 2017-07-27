@@ -142,7 +142,7 @@ class ApiRestTestCase extends GlpiApiRestTestCase
          $headers['App-Token'] = $appToken;
       }
 
-      $this->emulateRestRequest($method, 'PluginFlyvemdmCaptcha', $headers, $body, $params);
+      $this->emulateRestRequest($method, 'PluginFlyvemdmdemoCaptcha', $headers, $body, $params);
    }
 
 }
