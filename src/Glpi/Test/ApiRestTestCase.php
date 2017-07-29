@@ -31,6 +31,7 @@
 namespace Glpi\Test;
 
 use APIRest;
+use Exception;
 
 class ApiRestTestCase extends CommonTestCase {
    protected $http_client;
