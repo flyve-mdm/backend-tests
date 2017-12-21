@@ -1,9 +1,9 @@
 title: glpi test
 email: ml-flyvemdm@teclib.com
 twitter: flyvemdm
-baseurl: "/flyve-mdm-glpi-test"
+baseurl: "/backend-tests"
 url: "http://flyve.org"   
-image: http://flyve.org/flyve-mdm-glpi-test/images/logo2.png
+image: http://flyve.org/backend-tests/images/logo2.png
 
 # Build settings
 markdown: kramdown
@@ -13,7 +13,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-repository: flyve-mdm/flyve-mdm-glpi-test
+repository: flyve-mdm/backend-tests
 
 prose:
 
