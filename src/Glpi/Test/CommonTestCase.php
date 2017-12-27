@@ -69,12 +69,14 @@ abstract class CommonTestCase extends CommonDBTestCase
    }
 
    protected function setupGLPIFramework() {
-      global $CFG_GLPI, $DB, $LOADED_PLUGINS;
+      global $CFG_GLPI, $DB, $LOADED_PLUGINS, $PLUGIN_HOOKS, $AJAX_INCLUDE, $PLUGINS_INCLUDED;
 
       if (session_status() == PHP_SESSION_ACTIVE) {
          session_write_close();
       }
       $LOADED_PLUGINS = null;
+      $PLUGINS_INCLUDED = null;
+      $AJAX_INCLUDE = null;
       $_SESSION = array();
       $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;       // Prevents notice in execution of GLPI_ROOT . /inc/includes.php
       if (is_readable(GLPI_ROOT . "/config/config.php")) {
@@ -103,12 +105,13 @@ abstract class CommonTestCase extends CommonDBTestCase
       $_SESSION['MESSAGE_AFTER_REDIRECT'] = [];
    }
 
-   protected static function login($name, $password, $noauto = false) {
+   protected function login($name, $password, $noauto = false) {
       Session::start();
       $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;
       $auth = new Auth();
       $result = $auth->Login($name, $password, $noauto);
       $_SESSION['MESSAGE_AFTER_REDIRECT'] = [];
+      $this->setupGLPIFramework();
 
       return $result;
    }
@@ -168,5 +171,20 @@ abstract class CommonTestCase extends CommonDBTestCase
       $_SESSION['glpi_table_of'][get_class($mock)] = getTableForItemType($classname);
 
       return $mock;
+   }
+
+   protected function terminateSession() {
+      if (session_status() == PHP_SESSION_ACTIVE) {
+         session_write_close();
+      }
+   }
+
+   protected function restartSession() {
+      if (session_status() != PHP_SESSION_ACTIVE) {
+         session_start();
+         session_regenerate_id();
+         session_id();
+         //$_SESSION["MESSAGE_AFTER_REDIRECT"] = [];
+      }
    }
 }
