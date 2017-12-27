@@ -30,7 +30,6 @@
  */
 
 namespace Glpi\Test;
-use Config;
 use Session;
 use Html;
 use DB;
@@ -38,23 +37,24 @@ use Auth;
 
 abstract class CommonTestCase extends CommonDBTestCase
 {
+   protected $str = null;
 
-   public function setUp() {
+   public function beforeTestMethod($method) {
       self::resetGLPILogs();
    }
 
-   protected static function resetState() {
+   protected function resetState() {
       self::resetGLPILogs();
 
       $DBvars = get_class_vars('DB');
-      $result = self::drop_database(
+      $result = $this->drop_database(
          $DBvars['dbuser'],
          $DBvars['dbhost'],
          $DBvars['dbdefault'],
          $DBvars['dbpassword']
       );
 
-      $result = self::load_mysql_file($DBvars['dbuser'],
+      $result = $this->load_mysql_file($DBvars['dbuser'],
          $DBvars['dbhost'],
          $DBvars['dbdefault'],
          $DBvars['dbpassword'],
@@ -62,15 +62,18 @@ abstract class CommonTestCase extends CommonDBTestCase
       );
    }
 
-   protected static function resetGLPILogs() {
+   protected function resetGLPILogs() {
       // Reset error logs
       file_put_contents(GLPI_LOG_DIR."/sql-errors.log", '');
       file_put_contents(GLPI_LOG_DIR."/php-errors.log", '');
    }
 
-   protected static function setupGLPIFramework() {
+   protected function setupGLPIFramework() {
       global $CFG_GLPI, $DB, $LOADED_PLUGINS;
 
+      if (session_status() == PHP_SESSION_ACTIVE) {
+         session_write_close();
+      }
       $LOADED_PLUGINS = null;
       $_SESSION = array();
       $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;       // Prevents notice in execution of GLPI_ROOT . /inc/includes.php
@@ -87,18 +90,20 @@ abstract class CommonTestCase extends CommonDBTestCase
       include_once (GLPI_ROOT . "/inc/timer.class.php");
 
       // Security of PHP_SELF
-      $_SERVER['PHP_SELF']=Html::cleanParametersURL($_SERVER['PHP_SELF']);
+      $_SERVER['PHP_SELF'] = Html::cleanParametersURL($_SERVER['PHP_SELF']);
 
       ini_set("memory_limit", "-1");
       ini_set("max_execution_time", "0");
 
+      if (session_status() == PHP_SESSION_ACTIVE) {
+         session_write_close();
+      }
       ini_set('session.use_cookies', 0); //disable session cookies
+      session_start();
       $_SESSION['MESSAGE_AFTER_REDIRECT'] = [];
    }
 
    protected static function login($name, $password, $noauto = false) {
-      global $DB;
-
       Session::start();
       $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;
       $auth = new Auth();
@@ -108,23 +113,48 @@ abstract class CommonTestCase extends CommonDBTestCase
       return $result;
    }
 
-   protected function tearDown() {
+   public function afterTestMethod($method) {
       // Check logs
       $fileSqlContent = file_get_contents(GLPI_LOG_DIR."/sql-errors.log");
       $filePhpContent = file_get_contents(GLPI_LOG_DIR."/php-errors.log");
 
+      $class = static::class;
+      $class = str_replace('\\', '_', $class);
+      if ($fileSqlContent != '') {
+         rename(GLPI_LOG_DIR."/sql-errors.log", GLPI_LOG_DIR."/sql-errors__${class}__$method.log");
+      }
+      if ($fileSqlContent != '') {
+         rename(GLPI_LOG_DIR."/php-errors.log", GLPI_LOG_DIR."/php-errors__${class}__$method.log");
+      }
+
+      // Reset log files
       self::resetGLPILogs();
 
-      $this->assertEquals('', $fileSqlContent, 'sql-errors.log not empty');
-      $this->assertEquals('', $filePhpContent, 'php-errors.log not empty');
+      // Test content
+      $this->variable($fileSqlContent)->isEqualTo('', 'sql-errors.log not empty');
+      $this->variable($filePhpContent)->isEqualTo('', 'php-errors.log not empty');
    }
 
-   protected static function loginWithUserToken($userToken) {
+   protected function loginWithUserToken($userToken) {
       // Login as guest user
       $_REQUEST['user_token'] = $userToken;
       Session::destroy();
       self::login('', '', false);
       unset($_REQUEST['user_token']);
+   }
+
+   /**
+    * Get a unique random string
+    */
+   protected function getUniqueString() {
+      if (is_null($this->str)) {
+         return $this->str = uniqid('str');
+      }
+      return $this->str .= 'x';
+   }
+
+   protected function getUniqueEmail() {
+      return $this->getUniqueString() . "@example.com";
    }
 
    public function getMockForItemtype($classname, $methods = []) {
@@ -139,5 +169,4 @@ abstract class CommonTestCase extends CommonDBTestCase
 
       return $mock;
    }
-
 }

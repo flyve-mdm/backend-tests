@@ -31,6 +31,7 @@
 namespace Glpi\Test;
 
 use APIRest;
+use Exception;
 
 class ApiRestTestCase extends CommonTestCase {
    protected $http_client;
@@ -42,6 +43,7 @@ class ApiRestTestCase extends CommonTestCase {
    protected $restHeaders = [];
 
    protected static $backupServer;
+   protected static $backupGet;
 
    public static function setupBeforeClass() {
       global $CFG_GLPI;
@@ -51,6 +53,7 @@ class ApiRestTestCase extends CommonTestCase {
 
       // Backup $_SERVER before changing it for API tests
       self::$backupServer = $_SERVER;
+      self::$backupGet = $_GET;
    }
 
    public function setUp() {
@@ -92,6 +95,8 @@ class ApiRestTestCase extends CommonTestCase {
       $_SERVER['PATH_INFO'] = '/' . $relativeUri;
       $_SERVER['REQUEST_URI'] = '/apirest.php' . $_SERVER['PATH_INFO'];
       $_SERVER['QUERY_STRING'] = http_build_query($params);
+      $_SERVER["SCRIPT_FILENAME"] = 'apirest.php';
+      $_GET = $params;
       foreach ($reqHeaders as $headerName => $headerValue) {
          $headerName = str_replace('-', '_', $headerName);
          $headerName = 'HTTP_' . strtoupper($headerName);
@@ -268,6 +273,7 @@ class ApiRestTestCase extends CommonTestCase {
       parent::tearDown();
       // restore $_SERVER after changing it for API tests
       $_SERVER = self::$backupServer;
+      $_GET = self::$backupGet;
 
       //Restart a session if previously closed by the API
       if (session_status() != PHP_SESSION_ACTIVE) {
