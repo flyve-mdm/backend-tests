@@ -41,6 +41,13 @@ abstract class CommonTestCase extends CommonDBTestCase
 
    public function beforeTestMethod($method) {
       self::resetGLPILogs();
+      switch ($method){
+         case 'testShowForm':
+         case 'testPrepareInputForAdd':
+         case 'testPrepareInputForUpdate':
+            $this->login('glpi', 'glpi');
+            break;
+      }
    }
 
    protected function resetState() {
@@ -117,6 +124,14 @@ abstract class CommonTestCase extends CommonDBTestCase
    }
 
    public function afterTestMethod($method) {
+      switch ($method) {
+         case 'testShowForm':
+         case 'testPrepareInputForAdd':
+         case 'testPrepareInputForUpdate':
+            \Session::destroy();
+            break;
+      }
+
       // Check logs
       $fileSqlContent = file_get_contents(GLPI_LOG_DIR."/sql-errors.log");
       $filePhpContent = file_get_contents(GLPI_LOG_DIR."/php-errors.log");
