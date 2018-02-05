@@ -2,11 +2,11 @@
 
 ![Flyve MDM banner](https://user-images.githubusercontent.com/663460/26935464-54267e9c-4c6c-11e7-86df-8cfa6658133e.png)
 
-[![License](https://img.shields.io/github/license/flyve-mdm/flyve-mdm-glpi-test.svg?&label=License)](https://github.com/flyve-mdm/flyve-mdm-glpi-test/blob/master/LICENSE.md)
+[![License](https://img.shields.io/github/license/flyve-mdm/backend-tests.svg?&label=License)](https://github.com/flyve-mdm/backend-tests/blob/master/LICENSE.md)
 [![Follow twitter](https://img.shields.io/twitter/follow/FlyveMDM.svg?style=social&label=Twitter&style=flat-square)](https://twitter.com/FlyveMDM)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Group-blue.svg)](https://t.me/flyvemdm)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-[![GitHub release](https://img.shields.io/github/release/flyve-mdm/flyve-mdm-glpi-test.svg)](https://github.com/flyve-mdm/flyve-mdm-glpi-test/releases)
+[![GitHub release](https://img.shields.io/github/release/flyve-mdm/backend-tests.svg)](https://github.com/flyve-mdm/backend-tests/releases)
 
 Flyve MDM is a Mobile device management software that enables you to secure and manage all the mobile devices of your business or family via a web-based console.
 
@@ -16,7 +16,6 @@ To get started, check out <https://flyve-mdm.com/>!
 
 * [Synopsis](#synopsis)
 * [Build Status](#build-status)
-* [Installation](#installation)
 * [Documentation](#documentation)
 * [Versioning](#versioning)
 * [Contribute](#contribute)
@@ -27,29 +26,15 @@ To get started, check out <https://flyve-mdm.com/>!
 
 Helper package for backend's tests.
 
-TBF
-
 ## Build Status
 
 | **Release channel** | **Beta channel** |
 |:---:|:---:|
-| [![Build Status](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-test.svg?branch=master)](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-test) | [![Build Status](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-test.svg?branch=develop)](https://travis-ci.org/flyve-mdm/flyve-mdm-glpi-test) |
-
-## Installation
-
-Install the plugin as a regular plugin for GLPI, and enable it.
-
-### Configuration of the demo mode
-
-Open the configuration page of the plugin from the plugins page in GLPI. 
-
-Turn on the demo mode, and specify the Webapp URL the users can reach to manage their demo company.
-
-Enable the setting Time limit to limit the lifetime of the demo accounts. After a 90 days period, users will lose ability view and edit their fleets and devices.
+| [![Build Status](https://travis-ci.org/flyve-mdm/backend-tests.svg?branch=master)](https://travis-ci.org/flyve-mdm/backend-tests) | [![Build Status](https://travis-ci.org/flyve-mdm/backend-tests.svg?branch=develop)](https://travis-ci.org/flyve-mdm/backend-tests) |
 
 ## Documentation
 
-We share long-form content about the project in the [wiki](https://github.com/flyve-mdm/flyve-mdm-glpi-test/wiki).
+We share long-form content about the project on the [website](http://flyve.org/backend-tests/).
 
 ## Versioning
 
@@ -60,7 +45,7 @@ See [the tags section of our GitHub project](http://github.com/flyve-mdm/flyve-m
 ## Contribute
 
 Want to file a bug, contribute some code, or improve documentation? Excellent! Read up on our
-guidelines for [contributing](./CONTRIBUTING.md) and then check out one of our issues in the [Issues Dashboard](https://github.com/flyve-mdm/flyve-mdm-glpi-test/issues).
+guidelines for [contributing](./CONTRIBUTING.md) and then check out one of our issues in the [Issues Dashboard](https://github.com/flyve-mdm/backend-tests/issues).
 
 ## Contact
 
