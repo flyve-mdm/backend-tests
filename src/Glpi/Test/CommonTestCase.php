@@ -78,6 +78,7 @@ abstract class CommonTestCase extends CommonDBTestCase
       $PLUGINS_INCLUDED = null;
       $AJAX_INCLUDE = null;
       $_SESSION = array();
+      $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;       // Prevents notice in execution of GLPI_ROOT . /inc/includes.php
       if (is_readable(GLPI_ROOT . "/config/config.php")) {
          $configFile = "/config/config.php";
       } else {
@@ -85,8 +86,6 @@ abstract class CommonTestCase extends CommonDBTestCase
       }
       include (GLPI_ROOT . $configFile);
       require (GLPI_ROOT . "/inc/includes.php");
-      $_SESSION['glpi_use_mode'] = Session::DEBUG_MODE;
-      \Toolbox::setDebugMode();
 
       $DB = new DB();
 
@@ -108,6 +107,7 @@ abstract class CommonTestCase extends CommonDBTestCase
 
    protected function login($name, $password, $noauto = false) {
       Session::start();
+      $_SESSION['glpi_use_mode'] = Session::NORMAL_MODE;
       $auth = new Auth();
       $result = $auth->Login($name, $password, $noauto);
       $_SESSION['MESSAGE_AFTER_REDIRECT'] = [];
