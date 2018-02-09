@@ -139,9 +139,7 @@ class ApiRestTestCase extends CommonTestCase {
       } catch (ApiExitException $e) {
          // Emulated exit from the API session_id() $_SESSION PHP_SESSION_NONE
       }
-      if (session_status() == PHP_SESSION_ACTIVE) {
-         session_write_close();
-      }
+      $this->terminateSession();
 
       $this->restHeaders = $headers;
       $this->restHttpCode = $httpCode;
@@ -274,13 +272,6 @@ class ApiRestTestCase extends CommonTestCase {
       // restore $_SERVER after changing it for API tests
       $_SERVER = self::$backupServer;
       $_GET = self::$backupGet;
-
-      //Restart a session if previously closed by the API
-      if (session_status() != PHP_SESSION_ACTIVE) {
-         session_start();
-         session_regenerate_id();
-         session_id();
-         //$_SESSION["MESSAGE_AFTER_REDIRECT"] = [];
-      }
+      $this->restartSession();
    }
 }
