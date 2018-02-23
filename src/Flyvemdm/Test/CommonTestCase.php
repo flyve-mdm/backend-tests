@@ -39,7 +39,7 @@ class CommonTestCase extends \Glpi\Test\CommonTestCase {
     * @param string $guestEmail
     * @return \PluginFlyvemdmInvitation
     */
-   private function createInvitation($guestEmail) {
+   protected function createInvitation($guestEmail) {
       $invitation = new \PluginFlyvemdmInvitation();
       $invitation->add([
          'entities_id' => $_SESSION['glpiactive_entity'],
@@ -85,7 +85,7 @@ class CommonTestCase extends \Glpi\Test\CommonTestCase {
    $inventory = null
    ) {
       //Version change
-      $finalVersion = \PluginFlyvemdmAgent::MINIMUM_ANDROID_VERSION
+      $finalVersion = \PluginFlyvemdmAgent::MINIMUM_ANDROID_VERSION . '.0';
       if ($version) {
          $finalVersion = $version;
       }
