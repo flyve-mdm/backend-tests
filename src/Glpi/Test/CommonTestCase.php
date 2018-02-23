@@ -35,8 +35,7 @@ use Html;
 use DB;
 use Auth;
 
-abstract class CommonTestCase extends CommonDBTestCase
-{
+abstract class CommonTestCase extends CommonDBTestCase {
    protected $str = null;
 
    public function beforeTestMethod($method) {
@@ -86,6 +85,10 @@ abstract class CommonTestCase extends CommonDBTestCase
       }
       include (GLPI_ROOT . $configFile);
       require (GLPI_ROOT . "/inc/includes.php");
+
+      //To debug php fatal errors. May impact atoum workers communication
+      //$_SESSION['glpi_use_mode'] = Session::DEBUG_MODE;
+      //\Toolbox::setDebugMode();
 
       $DB = new DB();
 
